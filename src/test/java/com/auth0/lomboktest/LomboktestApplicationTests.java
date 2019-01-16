@@ -1,8 +1,11 @@
 package com.auth0.lomboktest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
+
+import java.lang.reflect.Executable;
 
 class LomboktestApplicationTests {
 
@@ -45,5 +48,11 @@ class LomboktestApplicationTests {
     Lecture l2 = new Lecture(lectureName, lectureCode);
 
     assertEquals(l1, l2);
+  }
+
+  @Test
+  void testNullPointerExceptions() {
+    Customer okCustomer = new Customer("Someone", null);
+    assertThrows(NullPointerException.class, ()->{new Customer(null, null);});
   }
 }
