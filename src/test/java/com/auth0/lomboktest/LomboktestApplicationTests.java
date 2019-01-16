@@ -12,8 +12,8 @@ class LomboktestApplicationTests {
     String password = "some-password";
     User user = new User(username, password);
 
-    assertEquals(user.getUsername(), username);
-    assertEquals(user.getPassword(), password);
+    assertEquals(username, user.getUsername());
+    assertEquals(password, user.getPassword());
   }
 
   @Test
@@ -22,7 +22,17 @@ class LomboktestApplicationTests {
     String courseCode = "cs50";
     Course course = Course.builder().courseName(courseName).courseCode(courseCode).build();
 
-    assertEquals(course.getCourseName(), courseName);
-    assertEquals(course.getCourseCode(), courseCode);
+    assertEquals(courseName, course.getCourseName());
+    assertEquals(courseCode, course.getCourseCode());
+  }
+
+  @Test
+  void testToString() {
+    String firstName = "John";
+    String lastName = "Doe";
+    String expectedResult = "Person(firstName=" + firstName + ", lastName=" + lastName + ")";
+
+    Person person = new Person(firstName, lastName);
+    assertEquals(expectedResult, person.toString());
   }
 }
