@@ -1,11 +1,14 @@
 package com.auth0.lomboktest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Executable;
+import java.math.BigDecimal;
 
 class LomboktestApplicationTests {
 
@@ -54,5 +57,28 @@ class LomboktestApplicationTests {
   void testNullPointerExceptions() {
     Customer okCustomer = new Customer("Someone", null);
     assertThrows(NullPointerException.class, ()->{new Customer(null, null);});
+  }
+
+  @Test
+  void testConstructors() {
+    Product unknown = new Product();
+    assertNull(unknown.getTitle());
+    assertNull(unknown.getDescription());
+    assertFalse(unknown.isAvailable());
+    assertNull(unknown.getPrice());
+    assertNull(unknown.getWeight());
+
+    String title = "Pizza";
+    String description = "Delicious";
+    boolean available = true;
+    BigDecimal price = BigDecimal.valueOf(15);
+    BigDecimal weight = BigDecimal.valueOf(0.9);
+
+    Product pizza = new Product(title, description, available, price, weight);
+    assertEquals(title, pizza.getTitle());
+    assertEquals(description, pizza.getDescription());
+    assertTrue(pizza.isAvailable());
+    assertEquals(price, pizza.getPrice());
+    assertEquals(weight, pizza.getWeight());
   }
 }
