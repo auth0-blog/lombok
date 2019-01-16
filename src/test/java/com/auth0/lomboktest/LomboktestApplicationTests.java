@@ -35,4 +35,15 @@ class LomboktestApplicationTests {
     Person person = new Person(firstName, lastName);
     assertEquals(expectedResult, person.toString());
   }
+
+  @Test
+  void testEqualsAndHashCode() {
+    String lectureName = "Intro to Computer Science";
+    String lectureCode = "cs50";
+
+    Lecture l1 = new Lecture(lectureName, lectureCode);
+    Lecture l2 = new Lecture(lectureName, lectureCode);
+
+    assertEquals(l1, l2);
+  }
 }
