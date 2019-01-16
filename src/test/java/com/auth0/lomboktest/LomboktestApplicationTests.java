@@ -81,4 +81,18 @@ class LomboktestApplicationTests {
     assertEquals(price, pizza.getPrice());
     assertEquals(weight, pizza.getWeight());
   }
+
+  @Test
+  void testData() {
+    String title = "Lombok";
+    Integer grade = 10;
+
+    Magic m1 = new Magic(title, grade);
+    Magic m2 = new Magic(title, grade);
+
+    assertEquals(m1, m2);
+    assertEquals(title, m1.getTitle());
+    assertEquals(grade, m2.getGrade());
+    assertTrue(m1.isWorks());
+  }
 }
